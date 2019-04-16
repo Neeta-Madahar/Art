@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Prismic from 'prismic-javascript';
 import {API_ENDPOINT} from '@/config/constants';
 

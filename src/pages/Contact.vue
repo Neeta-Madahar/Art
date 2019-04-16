@@ -43,7 +43,7 @@
   import Breadcrumb from '@/common/Breadcrumb';
   import store from '../store/';
 
-  const formAction = 'https://formspree.io/address@email.tld';
+//  const formAction = 'https://formspree.io/address@email.tld';
 
   export default {
     name: 'contact',
