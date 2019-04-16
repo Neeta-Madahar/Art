@@ -1,0 +1,216 @@
+@import 'mixins';
+
+body {
+  font-family: $font-raleway;
+  color: $color-grey;
+  font-size: $font-size-body-mobile;
+
+  @include sm {
+    font-size: $font-size-body;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $font-rubik-bold;
+}
+
+h2 {
+  margin: 40px 0 40px 0;
+  font-size: $heading-size;
+
+  @include md {
+    font-size: $heading-size-md;
+  }
+}
+
+h1 {
+  border-bottom: 1px solid;
+  margin-bottom: 40px;
+}
+
+h3 {
+  color: $color-grey;
+  font-size: $font-size-m;
+  margin: 30px 0;
+  text-align: center;
+
+  @include sm {
+    text-align: left;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $color-green;
+  transition: color .3s ease;
+}
+
+q {
+  font-style: italic;
+}
+
+p:first-child {
+  margin-top: 0;
+}
+
+[role="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  background: none;
+  border: 0;
+  color: inherit;
+  /* cursor: default; */
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-appearance: button; /* for input */
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+[role="button"] {
+  color: inherit;
+  cursor: default;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  white-space: pre;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.font {
+  &--h1 {
+    font-size: $font-size-xxl;
+  }
+  &--h2 {
+    font-size: $font-size-xl;
+  }
+  &--h3 {
+    font-size: $font-size-l;
+  }
+  &--body {
+    font-size: $font-size-body;
+  }
+  &--mobile {
+    font-size: $font-size-body-mobile;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.image {
+  max-width: 100%;
+}
+
+.VueCarousel {
+  margin: 0 20px;
+  text-align: right;
+  
+  @include sm {
+    margin-left: auto;
+    margin-right: 40px;
+    max-width: 700px;
+  }
+
+  button {
+    padding: 12px 10px;
+
+    @include hover-focus {
+      background: none !important;
+    }
+  }
+
+  &-navigation-button {
+    margin-top: 20px;
+
+    &:before {
+      font-family: 'icomoon';
+      font-size: 20px;
+      display: block;
+    }
+  }
+
+  &-navigation-prev:before {
+    content: "\e902";
+    transform: rotate(180deg);
+    color: $color-grey;
+    opacity: 1;
+  }
+
+  &-navigation-next:before {
+    content: "\e902";
+    transform: rotate(0deg);
+    color: $color-grey;
+  }
+
+  &-wrapper {
+    padding-top: 25px;
+
+    @include sm {
+      padding-top: 50px;
+    }
+  }
+
+  q {
+    position: relative;
+  }
+
+  q:before,
+  q:after {
+    font-size: 50px;
+    line-height: 1;
+  }
+
+  q:after {
+    position: absolute;
+    bottom: -50px;
+  }
+
+  &-slide {
+    padding: 0 20px;
+  }
+}
+
+.menu-open {
+  overflow: hidden;
+}
+
+@media print {
+  .header-navigation-nav { display: none !important; }
+  .breadcrumb { display: none !important; }
+  .footer { display: none !important; }
+  .nav-button { display: none !important; }
+}

@@ -1,0 +1,100 @@
+vm_settings: &vm_settings
+  working_directory: ~/app
+  docker:
+    - image: circleci/node:latest
+
+version: 2
+jobs:
+  deploy:
+    working_directory: ~/app
+    docker:
+      - image: circleci/python:2.7
+    steps:
+      - attach_workspace:
+          at: ~/app/build
+
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+
+#      - run:
+#          name: AWS Sync to Yoga
+#          command: aws --region eu-west-1 s3 sync ./build s3://neetamadahar.com/art/ --exact-timestamps --delete || return 1
+          
+      - run:
+          name: AWS Sync to main site
+          command: aws --region us-east-2 s3 sync ./build s3://neetamadahar-art.com/ --exact-timestamps --delete || return 1
+
+
+  build:
+    <<: *vm_settings
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Rebuild Node-sass
+          command: npm rebuild node-sass
+
+      - run: yarn run build
+
+      - persist_to_workspace:
+          root: dist
+          paths:
+            - .
+
+  test:
+    <<: *vm_settings
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn run lint
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /^v.*/
+
+      - build:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/

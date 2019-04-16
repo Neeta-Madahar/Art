@@ -1,0 +1,60 @@
+{
+  "data": {
+    "page_title": [
+      {
+        "type": "heading1",
+        "text": "Home",
+        "spans": []
+      }
+    ],
+    "body": [
+      {
+        "slice_type": "images",
+        "primary": {
+          "image": {
+            "dimensions": {
+              "width": 1000,
+              "height": 600
+            },
+            "alt": null,
+            "copyright": null,
+            "url": "/src/assets/images/sustanance.jpg"
+          },
+          "title": [
+            {
+              "type": "heading1",
+              "text": "",
+              "spans": []
+            }
+          ],
+          "link": {
+            "type": "Document",
+            "slug": "/work",
+            "link_type": "Document"
+          },
+          "price": []
+        }
+      },
+      {
+        "slice_type": "cta_text",
+        "primary": {
+          "text": [
+            {
+              "text": "Clippers Quay is a new community of modern apartments, complete with carefully-selected onsite services and amenities. It’s in the waterside neighbourhood of Salford Quays, just a 15 minute journey to Manchester city centre."
+            }
+          ],
+          "title": [{ "text": "Waterside homes is 15 minutes from Manchester" }],
+          "cta_text": [{ "text": "Life at Clippers Quay" }],
+          "cta": {
+            "link_type": "Document",
+            "slug": "clippers-quay"
+          },
+          "is_floated": "yes"
+        }
+      },
+      {
+        "slice_type": "poi_map"
+      }
+    ]
+  }
+}

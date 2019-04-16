@@ -1,0 +1,47 @@
+form {
+  button {
+    padding: 20px;
+    border: 2px solid $color-green;
+    margin: 15px auto;
+    transition: background-color .3s ease;
+    background-color: $color-white;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    @include sm {
+      width: auto;
+    }
+
+    @include hover-focus {
+      color: $color-white;
+      background-color: $color-green;
+      outline: none;
+
+      i {
+        color: currentColor;
+      }
+    }
+
+    i {
+      font-size: 1.5em;
+      vertical-align: middle;
+      margin-right: 10px;
+      color: $color-green;
+    }
+  }
+
+  label {
+    color: $color-white;
+    display: block;
+    font-family: $font-rubik;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+  }
+}
+
