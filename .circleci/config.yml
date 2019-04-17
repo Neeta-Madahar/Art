@@ -23,7 +23,7 @@ jobs:
           
       - run:
           name: AWS Sync to main site
-          command: aws --region eu-west-1 s3 sync ./build s3://neetamadahar-art.com/ --exact-timestamps --delete || return 1
+          command: aws --region eu-west-1 s3 sync ./build s3://neetamadahar-art.com/ --acl public-read --exact-timestamps --delete || return 1
 
 
   build:
