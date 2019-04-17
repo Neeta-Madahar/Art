@@ -93,6 +93,8 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+            branches:
+              ignore: /.*/
 
       - build:
           requires:
@@ -100,6 +102,8 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+            branches:
+              ignore: /.*/
       - deploy:
           requires:
             - build
