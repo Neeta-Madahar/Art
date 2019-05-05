@@ -17,9 +17,9 @@ jobs:
           name: Install awscli
           command: sudo pip install awscli
 
-#      - run:
-#          name: AWS Sync to Yoga
-#          command: aws --region eu-west-1 s3 sync ./build s3://neetamadahar.com/art/ --exact-timestamps --delete || return 1
+      - run:
+          name: AWS Sync to Art
+          command: aws --region eu-west-1 s3 sync ./build s3://neetamadahar.com/art/ --exact-timestamps --delete || return 1
           
       - run:
           name: AWS Sync to main site

@@ -11,7 +11,7 @@ export const getContactPage = async ({ commit }) => {
 
 export const getLinksPage = async ({ commit }) => {
   await Prismic.api(API_ENDPOINT)
-    .then(api => api.getByUID('link', 'links'))
+    .then(api => api.getByUID('links', 'links'))
     .then(response => commit('addToPage', ['links', response.data]))
     .catch(e => console.log(`Apologies, there was a ${e} error getting data from the CMS.`));
 };
@@ -96,7 +96,7 @@ export const getArtwork = async ({ commit }, artwork) => {
 
 export const getPlaySpacePage = async ({commit}) => {
   await Prismic.api(API_ENDPOINT)
-    .then(api => api.getByUID('play_spac', 'play_space'))
+    .then(api => api.getByUID('playspace', 'playspace'))
     .then(response => commit('addToPage', ['playSpace', response.data]))
     .catch(e => console.log(`Apologies, there was a ${e} error getting data from the CMS.`));
 };

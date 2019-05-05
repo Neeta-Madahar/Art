@@ -10,11 +10,13 @@ The project is served on an S3 bucket and acts as an independent site (art site)
 The site is prerendered using Prerender.io specifically for bots. 
 
 When user hits the Cloudfront Edge, a Lamda function is fired to determine if they are a bot or not. Bots are sent to the
-Prerendered.
+Prerendered. If you need to update these lambda's, you'll need to update the links to them in each of the Cloudfront distributions.
 
 ### CMS
 
 We are using Prismic.io to serve the content.
+
+[art-and-yoga.prismic.io](https://art-and-yoga.prismic.io)
 
 ## Prerequisites
 
